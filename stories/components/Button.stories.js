@@ -1,4 +1,5 @@
 import { action } from '@storybook/addon-actions';
+import { withKnobs, object } from '@storybook/addon-knobs';
 // import Task from './Task';
 import OButton from '../../src/components/Button/Button';
 
@@ -12,7 +13,7 @@ export default {
   title: 'Button',
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/,
-  decorators: [paddedList],
+  decorators: [paddedList, withKnobs],
 };
 export const actionsData = {
   handleClick: action('click'),
