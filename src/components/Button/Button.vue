@@ -22,7 +22,7 @@
 </script> -->
 
 <template>
-  <button :type="type" class="button" :class="[button_classes, button_color]">
+  <button :type="type" class="button" :class="[button_classes, button_color]" @click="click">
     <span v-if="back" class="button__arrow-tail" />
     <template v-if="text">{{ text }}</template>
     <i v-if="icon" :class="[ `icon-${icon}`]" />
@@ -44,7 +44,7 @@ export default {
     role: {
       type: String,
       required: false,
-      default: null
+      default: 'primary'
     },
     variant: {
       type: String,
@@ -104,14 +104,23 @@ export default {
     },
     button_color () {
       // Check if button is inside message component
-      // if (this.$parent.$options._componentTag === 'o-message') {
-      //   let message_color = this.$parent.$options.propsData.color
-      //   return message_color !== undefined ? `button--color-${message_color}` : 'button--color-gray'
-      // } else {
-      //   return {
-      //     [`button--color-${this.color}`]: this.color,
-      //   }
-      // }
+      if (this.$parent.$options._componentTag === 'o-message') {
+        let message_color = this.$parent.$options.propsData.color
+        return message_color !== undefined ? `button--color-${message_color}` : 'button--color-gray'
+      } else {
+        return {
+          [`button--color-${this.color}`]: this.color,
+        }
+      }
+    }
+  },
+  methods: {
+    click(ev) {
+      /**
+       * Passthrough click event
+       * @type {Event}
+       */
+      this.$emit('click', ev)
     }
   }
 }

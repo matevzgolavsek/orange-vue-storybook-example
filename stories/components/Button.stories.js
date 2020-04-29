@@ -18,34 +18,25 @@ export default {
   decorators: [paddedList, withKnobs]
 };
 
-function handleClick() {
-  console.log('sine');
-}
+export const actionsData = {
+  handleClick: action('click'),
+};
 
 
 storiesOf('Components/Buttons', module)
   .addDecorator(withInfo)
   .addDecorator(paddedList)
   .addDecorator(withKnobs)
-  .add(
-    'Default',
-    () => ({
-      components: { OButton },
-      template: '<o-button @click="handleClick" text="Default"></o-button>',
-      methods: { handleClick: action('click') },
-    }),
-    {
-      info: {
-        summary: 'Default button summary'
-      }
-    }
-  )
 
   .add(
     'Roles',
     () => ({
       components: { OButton },
-      template: '<o-button @click="handleClick" text="Secondary" role="secondary"></o-button>',
+      template: `<div>
+        <o-button @click="handleClick" text="primary"></o-button>
+        <o-button @click="handleClick" text="Secondary" role="secondary"></o-button>
+        <o-button @click="handleClick" text="Basic" role="basic"></o-button>
+      </div>`,
       methods: actionsData,
     }),
     {
@@ -55,12 +46,28 @@ storiesOf('Components/Buttons', module)
     }
   )
 
+  .add(
+    'Sizes',
+    () => ({
+      components: { OButton },
+      template: `<div>
+        <o-button @click="handleClick" text="Small" size="small"></o-button>
+        <o-button @click="handleClick" text="Regular"></o-button>
+        <o-button @click="handleClick" text="Large" size="Large"></o-button>
+      </div>`,
+      methods: actionsData,
+    }),
+    {
+      info: {
+        summary: 'Sizes button summary'
+      }
+    }
+  )
 
-export const actionsData = {
-  handleClick: action('click'),
-};
 
-const taskTemplate = `<task :task="task" @archiveTask="onArchiveTask" @pinTask="onPinTask"/>`;
+
+
+
 const buttonTemplate = `<o-button @click="handleClick" text="Default"></o-button>`;
 
 // default state
