@@ -2,44 +2,84 @@ import { action } from '@storybook/addon-actions';
 // import Task from './Task';
 import OButton from '../../src/components/Button/Button';
 
+const paddedList = () => {
+  return {
+    template: '<div class="p-3"><story/></div>',
+  };
+};
+
 export default {
   title: 'Button',
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/,
+  decorators: [paddedList],
 };
 export const actionsData = {
-  onPinTask: action('onPinTask'),
-  onArchiveTask: action('onArchiveTask'),
-  handleClick: action('buttonClick'),
-};
-
-export const taskData = {
-  id: '1',
-  title: 'Test Task',
-  state: 'Task_INBOX',
-  updated_at: new Date(2019, 0, 1, 9, 0),
-};
-
-export const buttonData = {
-  isDisabled: true
+  handleClick: action('click'),
 };
 
 const taskTemplate = `<task :task="task" @archiveTask="onArchiveTask" @pinTask="onPinTask"/>`;
-const buttonTemplate = `<o-button @buttonClick="handleClick">Text</o-button>`;
+const buttonTemplate = `<o-button @click="handleClick" text="Default"></o-button>`;
 
-// default task state
+// default state
 export const Default = () => ({
   components: { OButton },
   template: buttonTemplate,
   methods: actionsData,
 });
 
+// roles state
+export const Roles = () => ({
+  components: { OButton },
+  template: `<o-button @click="handleClick" text="Secondary" role="secondary"></o-button>`,
+  methods: actionsData,
+});
+
+// sizes state
+export const Sizes = () => ({
+  components: { OButton },
+  template: `<div><o-button @click="handleClick" text="Small" size="small"></o-button>
+            <o-button @click="handleClick" text="Regular"></o-button>
+            <o-button @click="handleClick" text="Large" size="Large"></o-button></div>`,
+  methods: actionsData,
+});
+
+// wide state
+export const Wide = () => ({
+  components: { OButton },
+  template: `<o-button @click="handleClick" text="Wide" :wide="true"></o-button>`,
+  methods: actionsData,
+});
+
+// icon state
+export const Icon = () => ({
+  components: { OButton },
+  template: `<div>
+              <o-button @click="handleClick" icon="remove"></o-button>
+              <o-button @click="handleClick" text="With icon" icon="arrow-right"></o-button></div>`,
+  methods: actionsData,
+});
+
 // disabled button state
 export const Disabled = () => ({
   components: { OButton },
-  template: `<o-button @buttonClick="handleClick" :isDisabled="true">Disabled</o-button>`,
+  template: `<o-button @buttonClick="handleClick" text="Disabled" disabled></o-button>`,
   methods: actionsData,
 });
+
+// colors button state
+export const Colors = () => ({
+  components: { OButton },
+  template: `<o-button @buttonClick="handleClick" text="Secondary color" color="secondary"></o-button>`,
+  methods: actionsData,
+});
+
+export const Inverted = () => ({
+  components: { OButton },
+  template: `<div class="p-2 bg-primary"> <o-button @buttonClick="handleClick" text="Inverted" :inverted="true"></o-button></div>`,
+  methods: actionsData,
+});
+
 
 // pinned task state
 // export const Pinned = () => ({
