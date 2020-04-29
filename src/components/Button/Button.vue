@@ -33,6 +33,9 @@
 export default {
   name: 'Button',
   props: {
+    /**
+     * Pick a type
+     */
     type: {
       type: String,
       required: false,

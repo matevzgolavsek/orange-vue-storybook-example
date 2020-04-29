@@ -1,5 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { withKnobs, object } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/vue'
+import { withInfo } from 'storybook-addon-vue-info'
 // import Task from './Task';
 import OButton from '../../src/components/Button/Button';
 
@@ -13,8 +15,47 @@ export default {
   title: 'Button',
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/,
-  decorators: [paddedList, withKnobs],
+  decorators: [paddedList, withKnobs]
 };
+
+function handleClick() {
+  console.log('sine');
+}
+
+
+storiesOf('Components/Buttons', module)
+  .addDecorator(withInfo)
+  .addDecorator(paddedList)
+  .addDecorator(withKnobs)
+  .add(
+    'Default',
+    () => ({
+      components: { OButton },
+      template: '<o-button @click="handleClick" text="Default"></o-button>',
+      methods: { handleClick: action('click') },
+    }),
+    {
+      info: {
+        summary: 'Default button summary'
+      }
+    }
+  )
+
+  .add(
+    'Roles',
+    () => ({
+      components: { OButton },
+      template: '<o-button @click="handleClick" text="Secondary" role="secondary"></o-button>',
+      methods: actionsData,
+    }),
+    {
+      info: {
+        summary: 'Roles button summary'
+      }
+    }
+  )
+
+
 export const actionsData = {
   handleClick: action('click'),
 };
