@@ -7,7 +7,7 @@ import OButton from '../../src/components/Button/Button';
 
 const paddedList = () => {
   return {
-    template: '<div><story/></div>',
+    template: '<div class="p-3"><story/></div>',
   };
 };
 
