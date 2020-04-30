@@ -1,0 +1,36 @@
+import { action } from '@storybook/addon-actions';
+import { withKnobs, object, text, select, boolean } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/vue';
+import { Preview, Meta, Story, Props } from '@storybook/addon-docs/blocks';
+
+import OButton from '../../src/components/Button/Button';
+
+<Meta title='Button' component={ OButton } />
+
+# Button
+
+Some **markdown** description, or whatever you want.
+
+<Preview>
+  <Story name='Default button' height='auto'>
+    {{
+      components: { OButton },
+      template: '<div><o-button text="I\'m a button!"/> <o-button text="I\'m a button 2!"/></div>',
+    }}
+  </Story>
+</Preview>
+
+Some **markdown** description, or whatever you want.
+
+# Button
+
+Some **markdown** description, or whatever you want.
+
+<Story name='Default button 2' height='auto'>{{
+  components: { OButton },
+  template: '<o-button text="I\'m a button!"/>',
+}}</Story>
+
+## Props
+
+<Props of={OButton} />

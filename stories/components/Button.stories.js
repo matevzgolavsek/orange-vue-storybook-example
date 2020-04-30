@@ -7,16 +7,16 @@ import OButton from '../../src/components/Button/Button';
 
 const paddedList = () => {
   return {
-    template: '<div class="p-3"><story/></div>',
+    template: '<div class="p-4"><story/></div>',
   };
 };
 
-export default {
-  title: 'Button',
-  // Our exports that end in "Data" are not stories.
-  excludeStories: /.*Data$/,
-  decorators: [paddedList, withKnobs]
-};
+// export default {
+//   title: 'Button',
+//   // Our exports that end in "Data" are not stories.
+//   excludeStories: /.*Data$/,
+//   decorators: [paddedList, withKnobs]
+// };
 
 export const actionsData = {
   handleClick: action('click'),
@@ -31,7 +31,7 @@ storiesOf('Components/Buttons', module)
     'Tryout',
     () => ({
       components: { OButton },
-      methods: actionsData,
+      methods: { handleClick: action('click') },
       props: {
         type: {
           default: text('Type', 'button')
@@ -129,11 +129,11 @@ storiesOf('Components/Buttons', module)
 // });
 
 // // roles state
-export const Roles = () => ({
-  components: { OButton },
-  template: `<o-button @click="handleClick" text="Secondary" role="secondary"></o-button>`,
-  methods: actionsData,
-});
+// export const Roles = () => ({
+//   components: { OButton },
+//   template: `<o-button @click="handleClick" text="Secondary" role="secondary"></o-button>`,
+//   methods: actionsData,
+// });
 
 // // sizes state
 // export const Sizes = () => ({
