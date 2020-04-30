@@ -115,12 +115,12 @@ export default {
     }
   },
   methods: {
-    click(ev) {
+    click(e) {
       /**
        * Passthrough click event
        * @type {Event}
        */
-      this.$emit('click', ev)
+      this.$emit('click', e)
     }
   }
 }

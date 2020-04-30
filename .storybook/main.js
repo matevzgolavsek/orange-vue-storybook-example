@@ -2,7 +2,16 @@ const path = require('path');
 
 module.exports = {
   stories: ['../stories/components/**/*.stories.js'],
-  addons: ['@storybook/addon-actions', '@storybook/addon-knobs', '@storybook/addon-docs', 'storybook-addon-vue-info/lib/register', '@storybook/addon-links'],
+  addons: [{
+      name: '@storybook/addon-docs',
+      options: {
+        vueDocgenOptions: {
+          alias: {
+            '@': path.resolve(__dirname, '../'),
+          },
+        },
+      },
+    }, '@storybook/addon-actions', '@storybook/addon-knobs', '@storybook/addon-links'],
 
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
