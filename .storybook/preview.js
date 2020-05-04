@@ -1,4 +1,3 @@
-// require('@orange-ui/orange/dist/css/orange.css');
 import '@orange-ui/orange/dist/css/orange.css';
 
 import { addParameters } from "@storybook/vue";

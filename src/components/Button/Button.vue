@@ -1,26 +1,3 @@
-<!-- <template>
-  <button type="button" class="button" @click="handleClick" :disabled="isDisabled">
-    <slot />
-  </button>
-</template>
-
-<script>
-  export default {
-    name: 'o-button',
-    props: {
-      isDisabled: {
-        type: Boolean,
-        default: false
-      }
-    },
-    methods: {
-      handleClick(e) {
-        this.$emit('buttonClick', e);
-      }
-    }
-  }
-</script> -->
-
 <template>
   <button :type="type" class="button" :class="[button_classes, button_color]" @click="click" :disabled="isDisabled">
     <span v-if="back" class="button__arrow-tail" />
@@ -34,57 +11,107 @@ export default {
   name: 'Button',
   props: {
     /**
-     * Pick a type
+     * HTML tag type
+     *
+     * Possible values: <code>button, submit, reset</code>
      */
     type: {
       type: String,
       required: false,
       default: 'button'
     },
+
+    /**
+     * Text in button
+     */
     text: {
       type: String,
       required: false,
       default: null
     },
+
+    /**
+     * Button role
+     *
+     * Possible values: <code>primary, secondary, basic</code>
+     */
     role: {
       type: String,
       required: false,
       default: 'primary'
     },
+
+    /**
+     * Button variant
+     */
     variant: {
       type: String,
       required: false,
       default: null
     },
+
+    /**
+     * Button icon on right side of text or without text / icon only
+     *
+     * Possible values: See [Icons page](link-to-page)
+     */
     icon: {
       type: String,
       required: false,
       default: null
     },
+
+    /**
+     * Disable button
+     */
     isDisabled: {
       type: Boolean,
       default: false
     },
+
+    /**
+     * Button color
+     *
+     * Possible values: See [Colors page](link-to-page)
+     */
     color: {
       type: String,
       required: false,
       default: null
     },
+
+    /**
+     * Button icon on right side of text or without text / icon only
+     *
+     * Possible values: <code>small, large</code>
+     */
     size: {
       type: String,
       required: false,
       default: null
     },
+
+    /**
+     * Make a button of any size horizontally fit inside it's parent element
+     */
     wide: {
       type: Boolean,
       required: false,
       default: false
     },
+
+    /**
+     * Back button for breadcrumbs
+     */
     back: {
       type: Boolean,
       required: false,
       default: false
     },
+
+    /**
+     * Invert a button so it can be placed on a solid color background.
+     */
     inverted: {
       type: Boolean,
       required: false,
