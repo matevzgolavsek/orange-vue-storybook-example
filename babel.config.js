@@ -6,7 +6,8 @@ module.exports = {
         /* Disabled due to clash between core-js versions in Storybook / Vue CLI */
         useBuiltIns: false,
         /* Disabled due to clash with Storybook MDX */
-        jsx: false
+        /* Use false if using normal .js stories */
+        jsx: true
       }
     ]
   ]
