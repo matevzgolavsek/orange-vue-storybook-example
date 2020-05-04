@@ -9,13 +9,30 @@ import OButton from '../../src/components/Button/Button';
 
 # Button
 
-<!-- Some **markdown** description, or whatever you want. -->
 A button is an interactive element used to <mark>trigger an action.</mark>
+
+<hr/>
+
+
+# Tryout
+
+Tryout is for live example of button on **Canvas** tab and bottom tab **Knobs**
 
 <Story name='Tryout'>
   {{
     components: { OButton },
-    template: '<o-button :text="text"/>',
+    template: `<div :class="buttonExtraClass">
+      <o-button @click="handleClick" :type="type" :text="text" :role="role" :icon="icon" :color="color" :size="size" :wide="wide" :back="back" :inverted="inverted"></o-button>
+    </div>`,
+    computed: {
+      buttonExtraClass() {
+        return {
+          [`bg-${this.color}`]: this.inverted,
+          [`p-3`]: this.inverted
+        }
+      }
+    },
+    methods: { handleClick: action('click') },
     props: {
       type: {
         default: text('Type', 'button')
