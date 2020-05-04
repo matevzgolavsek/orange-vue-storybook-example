@@ -22,7 +22,7 @@
 </script> -->
 
 <template>
-  <button :type="type" class="button" :class="[button_classes, button_color]" @click="click">
+  <button :type="type" class="button" :class="[button_classes, button_color]" @click="click" :disabled="isDisabled">
     <span v-if="back" class="button__arrow-tail" />
     <template v-if="text">{{ text }}</template>
     <i v-if="icon" :class="[ `icon-${icon}`]" />
@@ -41,6 +41,11 @@ export default {
       required: false,
       default: 'button'
     },
+    text: {
+      type: String,
+      required: false,
+      default: null
+    },
     role: {
       type: String,
       required: false,
@@ -51,15 +56,14 @@ export default {
       required: false,
       default: null
     },
-    text: {
-      type: String,
-      required: false,
-      default: null
-    },
     icon: {
       type: String,
       required: false,
       default: null
+    },
+    isDisabled: {
+      type: Boolean,
+      default: false
     },
     color: {
       type: String,
